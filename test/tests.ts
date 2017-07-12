@@ -45,7 +45,7 @@ describe('HtmlApi', () => {
                 .then(() => {
                     done(new Error("Expected unauthorised"));
                 }, function (error) {
-                    expect(error.body.Message).to.be.equal('Authorization has been denied for this request.');
+                    expect(error.Body.Message).to.be.equal('Authorization has been denied for this request.');
                     done();
                 })
         });
@@ -130,7 +130,7 @@ describe('TextApi', () => {
                 .then(() => {
                     done(new Error("Expected unauthorised"));
                 }, (error) => {
-                    expect(error.body.Message).to.be.equal('Authorization has been denied for this request.');
+                    expect(error.Body.Message).to.be.equal('Authorization has been denied for this request.');
                     done();
                 })
         });
@@ -212,7 +212,7 @@ describe('SummaryApi', () => {
                 .then(() => {
                     done(new Error("Expected unauthorised"));
                 }, function (error) {
-                    expect(error.body.Message).to.be.equal('Authorization has been denied for this request.');
+                    expect(error.Body.Message).to.be.equal('Authorization has been denied for this request.');
                     done();
                 })
         });
@@ -260,15 +260,78 @@ describe('WordCloudApi', () => {
         api = new PWA.WordCloudApi();
         api.SetApiKey(PWA.ApiKeys.LicenseCode, licenseCode);
     });
+
+    it('should call Post with short text successfully', function (done) {
+        let request = new PWA.WordCloudRequest();
+        request.Text = "I'd like to by that toy. wood you help me? I have twp more brothers.";
+        request.Orientation = PWA.OrientationEnum.EveryWhichWay;
+        request.CaseMethod = PWA.CaseMethodEnum.IntelligentCase;
+        request.PaletteName = "Earthy";
+        request.MaximumWordCount = 20000;
+        request.RemoveCommonWords = true;
+        request.FontName = "Arial";
+        request.Width = 500;
+        request.Height = 500;
+        request.OnlySentimentWords = false;
+        request.Language = PWA.LanguageEnum.En;
+        request.Style = PWA.StyleEnum.General;
+
+        api.Post(request)
+            .then(function (data) {
+                console.log('API called successfully. Returned data: ');
+                console.log(data.Body);
+                expect(data.Body.Url).to.not.be.empty;
+                done();
+            }, function (error) {
+                done(error);
+            })
+    });
 });
 
-describe('WordCloudApi', () => {
-    let api: PWA.WordCloudApi;
+describe('ContextualThesaurusApi', () => {
+    let api: PWA.ContextualThesaurusApi;
 
     beforeEach(() => {
-        api = new PWA.WordCloudApi();
+        api = new PWA.ContextualThesaurusApi();
         api.SetApiKey(PWA.ApiKeys.LicenseCode, licenseCode);
     });
+
+    it('should call Post with short text successfully', function (done) {
+        let request = new PWA.ContextualThesaurusRequest();
+        request.Context = "This is a sample text in English to test the sdk thesaurus. " +
+            "This is a second paragraph in the document. This  is a new line.";
+        request.ContextStart = 17;
+        request.ContextEnd = 20;
+
+        api.Post(request)
+            .then(function (data) {
+                console.log('API called successfully. Returned data: ');
+                console.log(data.Body);
+                expect(data.Body.Suggestions).to.not.be.empty;
+                expect(data.Body.Suggestions[0]).to.be.equal('paragraph');
+                done();
+            }, function (error) {
+                done(error);
+            })
+    });
+
+    it('should return unauthorised if the license code is incorrect', function (done) {
+        api.SetApiKey(PWA.ApiKeys.LicenseCode, incorrectLicenseCode);
+        let request = new PWA.ContextualThesaurusRequest();
+        request.Context = "This is a sample text in English to test the sdk thesaurus. " +
+            "This is a second paragraph in the document. This  is a new line.";
+        request.ContextStart = 17;
+        request.ContextEnd = 20;
+
+        api.Post(request, {TimeoutInMs: 5000, AwaitCallDelay: 1000})
+            .then(() => {
+                done(new Error("Expected unauthorised"));
+            }, function (error) {
+                expect(error.Body.Message).to.be.equal('Authorization has been denied for this request.');
+                done();
+            })
+    });
+
 });
 
 

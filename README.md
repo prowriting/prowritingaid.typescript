@@ -33,7 +33,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 import PWA = require('pro_writing_aid_ts');
 
 let api = new PWA.HtmlApi();
-api.SetApiKey(PWA.ApiKeys.LicenseCode, '$Your license code$');
+api.setApiKey(PWA.ApiKeys.licenseCode, '$Your license code$');
 
 let request = new PWA.HtmlAnalysisRequest();
 request.Html = 'I\'d like to by that toy. wood you help me? I have twp more brothers.';
@@ -41,7 +41,7 @@ request.Reports = ['grammar'];
 request.Language = PWA.LanguageEnum.En;
 request.Style = PWA.StyleEnum.General;
 
-api.Post(request)
+api.post(request)
     .then(function (data) {
         console.log('API called successfully. Returned data: ');
         console.log(data.Body);
@@ -59,10 +59,8 @@ API called successfully. Returned data:
        NumberOfIssues: 2,
        ReportDescription: 'Checks your text for grammar errors and potential word mis-use.' } ] }
  */
-
 ```
 
-<a name="documentation-for-api-endpoints"></a>
 ## Documentation for API Classes
 
 All URIs are relative to *https://api.prowritingaid.com*

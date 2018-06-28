@@ -1561,7 +1561,8 @@ export class ContextualThesaurusApi {
         (this.authentications as any)[ContextualThesaurusApiApiKeys[key]].apiKey = value;
     }
     /**
-     * 
+     * Tries to get the result of a request using the task id of the request
+     * @summary Tries to get the result of a request using the task id of the request
      * @param taskId 
      */
     public get (taskId: string) : Promise<{ response: http.ClientResponse; body: AsyncResponseContextualThesaurusResponse;  }> {
@@ -1615,7 +1616,8 @@ export class ContextualThesaurusApi {
         });
     }
     /**
-     * 
+     * Analyses text and returns contextual thesaurus entries
+     * @summary Analyses text and returns contextual thesaurus entries
      * @param requestp 
      */
     public post (requestp: ContextualThesaurusRequest) : Promise<{ response: http.ClientResponse; body: AsyncResponseContextualThesaurusResponse;  }> {
@@ -1716,7 +1718,8 @@ export class HtmlApi {
         (this.authentications as any)[HtmlApiApiKeys[key]].apiKey = value;
     }
     /**
-     * 
+     * Tries to get the result of a request using the task id of the request
+     * @summary Tries to get the result of a request using the task id of the request
      * @param taskId 
      */
     public get (taskId: string) : Promise<{ response: http.ClientResponse; body: AsyncResponseHtmlAnalysisResponse;  }> {
@@ -1770,7 +1773,7 @@ export class HtmlApi {
         });
     }
     /**
-     * 
+     * @summary Analyses HTML and adds suggestion tags to it
      * @param requestp 
      */
     public post (requestp: HtmlAnalysisRequest) : Promise<{ response: http.ClientResponse; body: AsyncResponseHtmlAnalysisResponse;  }> {
@@ -1871,7 +1874,8 @@ export class SummaryApi {
         (this.authentications as any)[SummaryApiApiKeys[key]].apiKey = value;
     }
     /**
-     * 
+     * Tries to get the result of a request using the task id of the request
+     * @summary Tries to get the result of a request using the task id of the request
      * @param taskId 
      */
     public get (taskId: string) : Promise<{ response: http.ClientResponse; body: AsyncResponseSummaryAnalysisResponse;  }> {
@@ -1925,7 +1929,8 @@ export class SummaryApi {
         });
     }
     /**
-     * 
+     * Gets the summary analysis of a document
+     * @summary Gets the summary analysis of a document
      * @param requestp 
      */
     public post (requestp: SummaryAnalysisRequest) : Promise<{ response: http.ClientResponse; body: AsyncResponseSummaryAnalysisResponse;  }> {
@@ -2026,7 +2031,8 @@ export class TextApi {
         (this.authentications as any)[TextApiApiKeys[key]].apiKey = value;
     }
     /**
-     * 
+     * Tries to get the result of a request using the task id of the request
+     * @summary Tries to get the result of a request using the task id of the request
      * @param taskId 
      */
     public get (taskId: string) : Promise<{ response: http.ClientResponse; body: AsyncResponseTextAnalysisResponse;  }> {
@@ -2080,7 +2086,7 @@ export class TextApi {
         });
     }
     /**
-     * 
+     * @summary Analyses text and returns tags for it
      * @param requestp 
      */
     public post (requestp: TextAnalysisRequest) : Promise<{ response: http.ClientResponse; body: AsyncResponseTextAnalysisResponse;  }> {
@@ -2181,7 +2187,7 @@ export class ThesaurusApi {
         (this.authentications as any)[ThesaurusApiApiKeys[key]].apiKey = value;
     }
     /**
-     * 
+     * Returns the thesaurus entries for a specific word
      * @summary Returns the thesaurus entries for a specific word
      * @param request 
      */
@@ -2283,7 +2289,8 @@ export class WordCloudApi {
         (this.authentications as any)[WordCloudApiApiKeys[key]].apiKey = value;
     }
     /**
-     * 
+     * Tries to get the result of a request using the task id of the request
+     * @summary Tries to get the result of a request using the task id of the request
      * @param taskId 
      */
     public get (taskId: string) : Promise<{ response: http.ClientResponse; body: AsyncResponseWordCloudResponse;  }> {
@@ -2335,7 +2342,8 @@ export class WordCloudApi {
         });
     }
     /**
-     * 
+     * Analyses text and returns a word cloud (as an image)
+     * @summary Analyses text and returns a word cloud (as an image)
      * @param requestp 
      */
     public post (requestp: WordCloudRequest) : Promise<{ response: http.ClientResponse; body: AsyncResponseWordCloudResponse;  }> {

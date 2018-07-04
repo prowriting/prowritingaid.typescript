@@ -2,8 +2,8 @@
 
 Official typescript [prowritingaid.com](https://prowritingaid.com) API. 
 
-- API version: v1
-- Package version: v1.0.0
+- API version: v2
+- Package version: v2.0.0
 
 ## Installation
 
@@ -27,7 +27,7 @@ Or install package from the git repo:
 
 ## Getting Started
 
-Please follow the [installation](#installation) instruction and execute the following JS code:
+Please follow the [installation](#installation) instruction and execute the following TS code:
 
 ```typescript
 import PWA = require('pro_writing_aid_ts');

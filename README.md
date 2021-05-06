@@ -5,6 +5,8 @@ Official typescript [prowritingaid.com](https://prowritingaid.com) API.
 - API version: v2
 - Package version: v2.0.0
 
+For more information, please visit [https://prowritingaid.com/en/App/API#ts](https://prowritingaid.com/en/App/API#ts)
+
 ## Installation
 
 ### For [Node.js](https://nodejs.org/)
